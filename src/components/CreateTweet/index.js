@@ -6,7 +6,11 @@ class CreateTweet extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tweet: '',
+            tweet: {
+                content: ' ',
+                date: ' ',
+                userName: ' '
+            },
             charCounter: 0,
             disableButton: false,
             overCharMessage: false,
@@ -16,6 +20,7 @@ class CreateTweet extends React.Component {
 
     addTweetText = (event) => {
         this.setState({
+            tweet: { content: event.target.value},
             tweet: event.target.value,
             date: new Date().toISOString()
         })
@@ -34,6 +39,7 @@ class CreateTweet extends React.Component {
         }
     }
 
+
     render() {
         const { tweet, disableButton, overCharMessage } = this.state;
         return (
@@ -41,7 +47,7 @@ class CreateTweet extends React.Component {
                 {context => (
                     <div>
                         <div className='post-box'>
-                            <textarea type='text' className='text-box' placeholder="What's on your mind..." cols="80" maxLength="200" value={tweet} onChange={event => this.addTweetText(event)} />
+                            <textarea type='text' className='text-box' placeholder="What's on your mind..." cols="80" maxLength="200" onChange={event => this.addTweetText(event)} />
                         </div>
                         <div className='button-box'>
                             <button className='tweet-btn' onClick={() => context.addTweet(tweet)} disabled={disableButton}> Tweet </button>

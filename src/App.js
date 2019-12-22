@@ -3,6 +3,7 @@ import './App.css';
 import TwitterContext from '../src/components/contexts/TwitterContext';
 import CreateTweet from './components/CreateTweet/index';
 import TweetsList from './components/TweetsList';
+import { getServerTweets } from '../src/lib/api';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,25 +16,42 @@ class App extends React.Component {
 
   addTweetText(tweet) {
     let newTweet = {
-      text: tweet,
+      content: tweet,
       date: new Date().toISOString(),
-      username: 'yonatan'
+      userName: 'yonatan'
     }
 
     this.setState((prevState) => {
       console.log(`prevState: ${prevState}`);
       let updatedTweetList = [newTweet, ...prevState.tweets];
-      localStorage.setItem('locallySavedTweets', JSON.stringify(updatedTweetList));
+      //localStorage.setItem('locallySavedTweets', JSON.stringify(updatedTweetList));
       return { tweets: updatedTweetList }
     })
     console.log(this.state.tweets);
   }
 
   componentDidMount(){
-    let getlocalTweets = JSON.parse(localStorage.getItem('locallySavedTweets'));
-    this.setState({
-      tweets: getlocalTweets ? getlocalTweets : []
-    })
+    // let getlocalTweets = JSON.parse(localStorage.getItem('locallySavedTweets'));
+    // this.setState({
+    //   tweets: getlocalTweets ? getlocalTweets : []
+    // })
+
+    
+      // postTweet(tweet).then(
+      //     (response) => {
+      //         console.log(response);
+      //     },
+      //     (error) => {
+      //         console.log(error);
+      //     }
+      // )
+
+      getServerTweets().then(response => {
+          console.log(response.data);
+          this.setState({ tweets: response.data.tweets})
+      }
+    )
+  
   }
 
   render() {

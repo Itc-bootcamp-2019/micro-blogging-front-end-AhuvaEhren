@@ -10,10 +10,10 @@ const TweetsList = props => {
                     {tweets.map((tweet, index) => (
                         <div className='tweet-box'>
                             <div className='post-info'>
-                                <span className='username'>{tweet.username}</span>
+                                <span className='username'>{tweet.userName}</span>
                                 <span className='date'>{tweet.date}</span>
                             </div>
-                            <p className='tweet-text' key={index}>{tweet.text}</p>
+                            <p className='tweet-text' key={index}>{tweet.content}</p>
                         </div>
                     ))}
                     <br />
