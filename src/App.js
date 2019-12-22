@@ -3,7 +3,7 @@ import './App.css';
 import TwitterContext from '../src/components/contexts/TwitterContext';
 import CreateTweet from './components/CreateTweet/index';
 import TweetsList from './components/TweetsList';
-import { getServerTweets } from '../src/lib/api';
+import { getServerTweets, postTweet } from '../src/lib/api';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,10 +16,12 @@ class App extends React.Component {
 
   addTweetText(tweet) {
     let newTweet = {
+      userName: 'yonatan',
       content: tweet,
-      date: new Date().toISOString(),
-      userName: 'yonatan'
+      date: new Date().toISOString()
     }
+
+    postTweet(newTweet).catch(error => console.log(error));
 
     this.setState((prevState) => {
       console.log(`prevState: ${prevState}`);
@@ -35,17 +37,6 @@ class App extends React.Component {
     // this.setState({
     //   tweets: getlocalTweets ? getlocalTweets : []
     // })
-
-    
-      // postTweet(tweet).then(
-      //     (response) => {
-      //         console.log(response);
-      //     },
-      //     (error) => {
-      //         console.log(error);
-      //     }
-      // )
-
       getServerTweets().then(response => {
           console.log(response.data);
           this.setState({ tweets: response.data.tweets})

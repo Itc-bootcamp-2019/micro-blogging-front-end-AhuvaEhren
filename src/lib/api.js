@@ -6,6 +6,6 @@ export function getServerTweets() {
     return axios.get(`${baseUrl}/tweet`);
 }
 
-// export function postTweet(tweet) {
-//     return axios.post(`${baseUrl}/tweet`, tweet);
-// }
+export function postTweet(tweet) {
+    return axios.post(`${baseUrl}/tweet`, ({tweet:tweet}));
+}
