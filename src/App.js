@@ -10,7 +10,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       tweets: [],
-      addTweet: this.addTweetText.bind(this)
+      addTweet: this.addTweetText.bind(this),
+      loading: true,
+      disableButton: true
     };
   }
 
@@ -37,22 +39,34 @@ class App extends React.Component {
     // this.setState({
     //   tweets: getlocalTweets ? getlocalTweets : []
     // })
-      getServerTweets().then(response => {
-          console.log(response.data);
-          this.setState({ tweets: response.data.tweets})
-      }
-    )
-  
+    this.setState({ 
+      loading: true
+    })
+
+    setInterval(() => this.getAllTweets(), 700);
   }
 
+  getAllTweets(){  getServerTweets().then(response => {
+    console.log(response.data);
+    this.setState({ 
+      tweets: response.data.tweets,
+      loading: false,
+      disableButton: false
+    })
+}
+)
+}
+
   render() {
+    const { loading } = this.state;
     return (
       <div className="App">
         <header className="App-header">
         </header>
         <TwitterContext.Provider value={this.state}>
           <CreateTweet />
-          <TweetsList />
+          {loading && <div className='loading'> <img src='https://www.terrasanctamuseum.org/wp-content/themes/TSM2019/images/loading2.gif' alt='loading' /> </div>}
+          {!loading && <TweetsList />}
         </TwitterContext.Provider>
       </div>
     );

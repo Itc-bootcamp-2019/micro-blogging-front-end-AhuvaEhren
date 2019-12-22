@@ -2,6 +2,8 @@
   text-align: center;
   background: #282c34;
   font-family: 'Roboto', sans-serif;
+  color: #61dafb;
+  border: 2px solid yellow;
 }
 
 .App-logo {
@@ -51,4 +53,10 @@
   top: -450px;
 
   border: 2px solid yellow;
+}
+
+.loading{
+  position: absolute;
+  top: 200px;
+  right: 450px;
 }
