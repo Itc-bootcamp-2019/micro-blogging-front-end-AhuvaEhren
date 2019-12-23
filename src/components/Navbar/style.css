@@ -1,0 +1,38 @@
+.navbar{
+    position: absolute;
+    width: calc(100% - 370px);
+    height: 58px;
+    left: 182px;
+    top: 0px;
+    padding-left: 16px;
+
+    background: #343A40;
+    border-radius: 6px;
+
+    display: flex;
+
+
+}
+
+.navbar-link{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+
+    color: rgba(255, 255, 255, 0.5);
+    padding-right: 45px;
+
+    text-decoration: none;
+}
+
+.navbar-link:active{
+    color: #FFFFFF;
+}
+
+.navbar-link:focus{
+    color: #FFFFFF;
+}

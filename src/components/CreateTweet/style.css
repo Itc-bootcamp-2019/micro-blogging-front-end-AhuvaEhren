@@ -3,7 +3,7 @@
     width: 600px;
     height: 180px;
     left: 367px;
-    top: 5px;
+    top: 110px;
     padding-top: 1%;
     padding-left: 1%;
 
@@ -38,7 +38,7 @@ button:disabled {
     width: 68px;
     height: 34px;
     left: 889px;
-    top: 131px;
+    top: 240px;
     outline:none;
 
     background: #007BFF;
@@ -55,6 +55,11 @@ button:disabled {
 
 }
 
+.tweet-btn:active{
+    background: #007bffcc;
+    border-color: #007bffcc;
+  }
+
 .overCharLimit{
     font-family: Roboto;
     font-style: normal;
@@ -70,8 +75,8 @@ button:disabled {
     position: absolute;
     width: 338px;
     height: 29px;
-    left: 383px;
-    top: 136px;
+    left: 375px;
+    top: 250px;
 
     background: #F8D7DA;
     border: 1px solid #F5C6CB;

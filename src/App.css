@@ -1,9 +1,8 @@
-.App {
+body {
   text-align: center;
-  background: #282c34;
+  background: #15202B;
   font-family: 'Roboto', sans-serif;
   color: #61dafb;
-  border: 2px solid yellow;
 }
 
 .App-logo {
@@ -50,13 +49,95 @@
   position: relative;
   width: 600px;
   left: 367px;
-  top: -450px;
-
-  border: 2px solid yellow;
+  top: 320px;
 }
 
 .loading{
   position: absolute;
   top: 200px;
   right: 450px;
+}
+
+.profile-title{
+  position: absolute;
+  width: 103px;
+  height: 42px;
+  left: 369px;
+  top: 110px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+
+  color: #FFFFFF;
+}
+
+.user-title{
+  position: absolute;
+  width: 90px;
+  height: 21px;
+  left: 368px;
+  top: 180px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+
+
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.user-input{
+  position: absolute;
+  width: 600px;
+  height: 61px;
+  left: 367px;
+  top: 222px;
+
+  background: #15202B;
+  outline: none;
+
+  border: 2px solid #CCCCCC;
+  box-sizing: border-box;
+  border-radius: 6px;
+  
+  font-size: 16px;
+  line-height: 19px;
+  color: #CCCCCC;
+  padding-left: 10px;
+}
+
+.profile-btn{
+  position: absolute;
+  width: 68px;
+  height: 34px;
+  left: 893px;
+  top: 296px;
+
+  background: #007BFF;
+  border-color: #007BFF;
+  border-radius: 4px;
+  outline:none;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+.profile-btn:active{
+  background: #007bffcc;
+  border-color: #007bffcc;
 }

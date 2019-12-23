@@ -48,9 +48,10 @@ class CreateTweet extends React.Component {
                     <div>
                         <div className='post-box'>
                             <textarea type='text' className='text-box' placeholder="What's on your mind..." cols="80" maxLength="200" onChange={event => this.addTweetText(event)} />
-                        </div>
+                        
                         <div className='button-box'>
                             <button className='tweet-btn' onClick={() => context.addTweet(tweet)} disabled={disableButton}> Tweet </button>
+                        </div>
                         </div>
                         <div className='overCharLimit' style={{ display: overCharMessage ? '' : 'none' }}> The tweet can't contain more than 140 chars. </div>
                     </div>

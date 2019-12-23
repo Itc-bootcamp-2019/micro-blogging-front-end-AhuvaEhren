@@ -20,6 +20,7 @@ code {
   left: 367px;
   top: -249px;
   margin-bottom: 15px;
+  overflow-wrap: break-word;
 
   background: #343A40;
   border-radius: 6px;

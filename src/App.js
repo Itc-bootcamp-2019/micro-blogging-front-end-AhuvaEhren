@@ -4,6 +4,14 @@ import TwitterContext from '../src/components/contexts/TwitterContext';
 import CreateTweet from './components/CreateTweet/index';
 import TweetsList from './components/TweetsList';
 import { getServerTweets, postTweet } from '../src/lib/api';
+import Navbar from './components/Navbar/index';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Profile from './components/Profile/index';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +31,7 @@ class App extends React.Component {
       date: new Date().toISOString()
     }
 
-    postTweet(newTweet).catch(error => console.log(error));
+    postTweet(newTweet).catch(error => alert(error));
 
     this.setState((prevState) => {
       console.log(`prevState: ${prevState}`);
@@ -34,41 +42,52 @@ class App extends React.Component {
     console.log(this.state.tweets);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // let getlocalTweets = JSON.parse(localStorage.getItem('locallySavedTweets'));
     // this.setState({
     //   tweets: getlocalTweets ? getlocalTweets : []
     // })
-    this.setState({ 
+    this.setState({
       loading: true
     })
 
-    setInterval(() => this.getAllTweets(), 700);
+    setInterval(() => this.getAllTweets(), 5000);
   }
 
-  getAllTweets(){  getServerTweets().then(response => {
-    console.log(response.data);
-    this.setState({ 
-      tweets: response.data.tweets,
-      loading: false,
-      disableButton: false
-    })
-}
-)
-}
+  getAllTweets() {
+    getServerTweets().then(response => {
+      console.log(response.data);
+      this.setState({
+        tweets: response.data.tweets,
+        loading: false,
+        disableButton: false
+      })
+    }
+    )
+  }
 
   render() {
     const { loading } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-        </header>
-        <TwitterContext.Provider value={this.state}>
-          <CreateTweet />
-          {loading && <div className='loading'> <img src='https://www.terrasanctamuseum.org/wp-content/themes/TSM2019/images/loading2.gif' alt='loading' /> </div>}
-          {!loading && <TweetsList />}
-        </TwitterContext.Provider>
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar></Navbar>
+          <Switch>
+            <Route exact path='/'>
+              <TwitterContext.Provider value={this.state}>
+                <CreateTweet />
+                {loading && <div className='loading'> <img src='https://www.terrasanctamuseum.org/wp-content/themes/TSM2019/images/loading2.gif' alt='loading' /> </div>}
+                {!loading && <TweetsList />}
+              </TwitterContext.Provider>
+            </Route>
+
+            <Route exact path='/profile'>
+              <Profile />
+            </Route>
+
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
