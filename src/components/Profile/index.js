@@ -11,7 +11,7 @@ class Profile extends React.Component {
     setUsername = (event) => {
         this.setState({ userName: event.target.value }); 
     }
-    
+
     submitUsername = () => {
         const { userName } = this.state;
         localStorage.setItem('locallySavedUsername', JSON.stringify(userName));
