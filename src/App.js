@@ -26,7 +26,7 @@ class App extends React.Component {
 
   addTweetText(tweet) {
     let newTweet = {
-      userName: 'yonatan',
+      userName: JSON.parse(localStorage.getItem('locallySavedUsername')),
       content: tweet,
       date: new Date().toISOString()
     }
@@ -36,17 +36,12 @@ class App extends React.Component {
     this.setState((prevState) => {
       console.log(`prevState: ${prevState}`);
       let updatedTweetList = [newTweet, ...prevState.tweets];
-      //localStorage.setItem('locallySavedTweets', JSON.stringify(updatedTweetList));
       return { tweets: updatedTweetList }
     })
     console.log(this.state.tweets);
   }
 
   componentDidMount() {
-    // let getlocalTweets = JSON.parse(localStorage.getItem('locallySavedTweets'));
-    // this.setState({
-    //   tweets: getlocalTweets ? getlocalTweets : []
-    // })
     this.setState({
       loading: true
     })
