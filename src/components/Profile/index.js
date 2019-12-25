@@ -18,7 +18,6 @@ class Profile extends React.Component {
     }
 
     render() {
-        const { username } = this.state;
         return (
             <div>
                 <h2 className='profile-title'>Profile</h2>

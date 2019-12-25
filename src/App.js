@@ -31,14 +31,12 @@ class App extends React.Component {
       date: new Date().toISOString()
     }
 
-    postTweet(newTweet).catch(error => alert(error));
+    postTweet(newTweet).catch( () => alert('Please create a username before you post by going to the Profile Page, located in the top left corner'));
 
     this.setState((prevState) => {
-      console.log(`prevState: ${prevState}`);
       let updatedTweetList = [newTweet, ...prevState.tweets];
       return { tweets: updatedTweetList }
     })
-    console.log(this.state.tweets);
   }
 
   componentDidMount() {
@@ -51,7 +49,6 @@ class App extends React.Component {
 
   getAllTweets() {
     getServerTweets().then(response => {
-      console.log(response.data);
       this.setState({
         tweets: response.data.tweets,
         loading: false,
